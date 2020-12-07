@@ -28,7 +28,7 @@ Ensure below project requirements are met, then run the makefiles according to d
 ```
 - make -f IAC/MK/main.mak               #(Windows/MAC)
 - make -f IAC/MK/main.mak start-ubuntu  #(Ubuntu)
-- make -fIAC/EKS/main.mk                #(AWS)
+- make -f IAC/EKS/main.mk               #(AWS)
 ```
  
 ## Project Requirements
