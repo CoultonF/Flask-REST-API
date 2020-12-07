@@ -21,6 +21,11 @@
     |   ├── returns                 # Returns REST API
     |   └── warehouse               # Warehouse REST API
     └── docs                        # Additional Documentation
+    
+## Project Requirements
+
+Ensure below project requirements are met, then run either the Mini
+ 
 ## Project Requirements
 
 Project requires yq and jq to be installed on shell. <br>
@@ -32,3 +37,16 @@ https://maven.apache.org/ <br>
 <br>
 Java 1.8 SDK <br>
 https://www.oracle.com/ca-en/java/technologies/javase/javase-jdk8-downloads.html <br>
+AWS Credentials and Configuration Setup <br>
+https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html <br>
+AWS CLI <br>
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html <br>
+MetalLB for Ubuntu OS <br>
+https://metallb.universe.tf/ <br>
+Docker<br>
+https://www.docker.com/ <br>
+Istio <br>
+https://istio.io/latest/docs/ops/diagnostic-tools/istioctl/ <br>
+Helm <br>
+https://helm.sh/docs/intro/install/
+Kubernetes
