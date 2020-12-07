@@ -1,6 +1,4 @@
-# tprj
-Template for CMPT 756's term project.
-
+# REST API using Flask on Minikube or AWS Distributed Microservices Architecture load tested with Gatling.io
 
     .
     ├── API                         # Communicate with Cluster
