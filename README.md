@@ -31,10 +31,8 @@ Ensure below project requirements are met, then run either the Mini
 Project requires yq and jq to be installed on shell. <br>
 https://github.com/mikefarah/yq <br>
 https://stedolan.github.io/jq/download/ <br>
-<br>
 Maven <br> 
 https://maven.apache.org/ <br>
-<br>
 Java 1.8 SDK <br>
 https://www.oracle.com/ca-en/java/technologies/javase/javase-jdk8-downloads.html <br>
 AWS Credentials and Configuration Setup <br>
@@ -48,5 +46,6 @@ https://www.docker.com/ <br>
 Istio <br>
 https://istio.io/latest/docs/ops/diagnostic-tools/istioctl/ <br>
 Helm <br>
-https://helm.sh/docs/intro/install/
-Kubernetes
+https://helm.sh/docs/intro/install/ <br>
+Kubernetes and EKSCTL <br>
+https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html <br>
