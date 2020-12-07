@@ -1,4 +1,4 @@
-# REST API using Flask on Minikube or AWS Distributed Microservices Architecture load tested with Gatling.io
+# REST API using Flask on Minikube or AWS Distributed Microservices Architecture and DynamoDB load tested with Gatling.io
 
     .
     ├── API                         # Communicate with Cluster
@@ -29,6 +29,12 @@ Ensure below project requirements are met, then run the makefiles according to d
 - make -f IAC/MK/main.mak               #(Windows/MAC)
 - make -f IAC/MK/main.mak start-ubuntu  #(Ubuntu)
 - make -f IAC/EKS/main.mk               #(AWS)
+```
+Complete deletion of build environment using
+```
+- make -f IAC/MK/main.mak stop          #(Windows/MAC)
+- make -f IAC/MK/main.mak stop-ubuntu   #(Ubuntu)
+- make -f IAC/EKS/main.mk stop          #(AWS)
 ```
  
 ## Project Requirements
