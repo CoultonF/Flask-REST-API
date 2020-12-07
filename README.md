@@ -24,7 +24,11 @@
     
 ## Project Requirements
 
-Ensure below project requirements are met, then run either the Mini
+Ensure below project requirements are met, then run the makefiles according to desired setup.
+- IAC/MK/main.mak (Windows/MAC)
+- IAC/MK/main.mak start-ubuntu (Ubuntu)
+- IAC/EKS/main.mk (AWS)
+
  
 ## Project Requirements
 
