@@ -24,6 +24,8 @@
     |   └── warehouse               # Warehouse REST API
     |
     └── docs                        # Additional Documentation
+        └── PDF                     # Gatling Stats with Failure Testing
+
     
 ## Project Startup and Shutdown
 
