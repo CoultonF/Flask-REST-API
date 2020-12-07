@@ -22,7 +22,7 @@
     |   └── warehouse               # Warehouse REST API
     └── docs                        # Additional Documentation
     
-## Project Requirements
+## Project Startup and Shutdown
 
 Ensure below project requirements are met, then run the makefiles according to desired setup
 ```
