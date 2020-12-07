@@ -6,12 +6,14 @@
     |   ├── api.mak                 # Basic Running CURLs for Testing
     |   ├── gatling.mak             # Start script for Gatling Load Testing
     |   └── api-proxies.mak         # Basic Running CURLs for Gatling Recorder
+    |
     ├── IaC                         # Managing Cluster
     |   ├── EKS                     # EKS Cluster
     |   ├── MK                      # Minikube Cluster
     |   ├── docker.mak              # Minikube/EKS Docker Containers
     |   ├── dynamo.mak              # AWS DynamoDB
     |   └── k8s.mak                 # Minikube/EKS Kubernetes Cluster
+    |
     ├── code                        # REST API, Cluster, and Docker Build Code
     |   ├── cart                    # Cart REST API
     |   ├── customer                # Customer REST API
@@ -20,6 +22,7 @@
     |   ├── misc                    # Cluster, Gateway, and Database Configuration 
     |   ├── returns                 # Returns REST API
     |   └── warehouse               # Warehouse REST API
+    |
     └── docs                        # Additional Documentation
     
 ## Project Startup and Shutdown
