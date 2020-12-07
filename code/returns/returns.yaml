@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: t3returns
+  labels:
+    app: t3returns
+spec:
+  ports:
+    - port: 30006
+      name: http
+  selector:
+    app: t3returns
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: svc-returns
+  labels:
+    account: SVC_CUSTOMER
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t3returns
+  labels:
+    app: t3returns
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: t3returns
+      version: v1
+  template:
+    metadata:
+      name: returns-pod
+      labels:
+        app: t3returns
+        version: v1
+    spec:
+      serviceAccountName: svc-returns
+      containers:
+        - name: returns
+          image: docker.io/coultonf/t3returns:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 30006
+          livenessProbe:
+            httpGet:
+              path: /api/v1/returns/health
+              port: 30006
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /api/v1/returns/readiness
+              port: 30006
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 5

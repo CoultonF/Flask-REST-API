@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: t3customer
+  labels:
+    app: t3customer
+spec:
+  ports:
+    - port: 30000
+      name: http
+  selector:
+    app: t3customer
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: svc-customer
+  labels:
+    account: SVC_CUSTOMER
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t3customer
+  labels:
+    app: t3customer
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: t3customer
+      version: v1
+  template:
+    metadata:
+      name: customer-pod
+      labels:
+        app: t3customer
+        version: v1
+    spec:
+      serviceAccountName: svc-customer
+      containers:
+        - name: customer
+          image: docker.io/coultonf/t3customer:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 30000
+          livenessProbe:
+            httpGet:
+              path: /api/v1/customer/health
+              port: 30000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /api/v1/customer/readiness
+              port: 30000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 5

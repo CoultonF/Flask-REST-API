@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: t3history
+  labels:
+    app: t3history
+spec:
+  ports:
+    - port: 30005
+      name: http
+  selector:
+    app: t3history
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: svc-history
+  labels:
+    account: SVC_HISTORY
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t3history
+  labels:
+    app: t3history
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: t3history
+      version: v1
+  template:
+    metadata:
+      name: history-pod
+      labels:
+        app: t3history
+        version: v1
+    spec:
+      serviceAccountName: svc-history
+      containers:
+        - name: history
+          image: docker.io/coultonf/t3history:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 30005
+          livenessProbe:
+            httpGet:
+              path: /api/v1/history/health
+              port: 30005
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /api/v1/history/readiness
+              port: 30005
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 5

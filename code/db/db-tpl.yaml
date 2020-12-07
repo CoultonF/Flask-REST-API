@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: t3db
+  labels:
+    app: t3db
+spec:
+  ports:
+    - port: 30002
+      name: http
+  selector:
+    app: t3db
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: awscred
+type: Opaque
+stringData:
+  AWS_REGION: replace
+  AWS_ACCESS_KEY_ID: replace
+  AWS_SECRET_ACCESS_KEY: replace
+  AWS_SESSION_TOKEN: replace
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: svc-db
+  labels:
+    account: SVC_DB
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t3db
+  labels:
+    app: t3db
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: t3db
+      version: v1
+  template:
+    metadata:
+      name: database-pod
+      labels:
+        app: t3db
+        version: v1
+    spec:
+      serviceAccountName: svc-db
+      containers:
+        - name: t3db
+          image: docker.io/coultonf/t3db:latest
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: awscred
+          ports:
+            - containerPort: 30002
+          livenessProbe:
+            httpGet:
+              path: /api/v1/datastore/health
+              port: 30002
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /api/v1/datastore/readiness
+              port: 30002
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 5

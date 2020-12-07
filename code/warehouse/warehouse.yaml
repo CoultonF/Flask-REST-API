@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: t3warehouse
+  labels:
+    app: t3warehouse
+spec:
+  ports:
+    - port: 30001
+      name: http
+  selector:
+    app: t3warehouse
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: svc-warehouse
+  labels:
+    account: SVC_WAREHOUSE
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t3warehouse
+  labels:
+    app: t3warehouse
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: t3warehouse
+      version: v1
+  template:
+    metadata:
+      name: warehouse-pod
+      labels:
+        app: t3warehouse
+        version: v1
+    spec:
+      serviceAccountName: svc-warehouse
+      containers:
+        - name: warehouse
+          image: docker.io/coultonf/t3warehouse:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 30001
+          livenessProbe:
+            httpGet:
+              path: /api/v1/warehouse/health
+              port: 30001
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /api/v1/warehouse/readiness
+              port: 30001
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 5

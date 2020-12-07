@@ -1,0 +1,50 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+      "tableCustomer": {
+        "Type": "AWS::DynamoDB::Table",
+        "Properties": {
+          "TableName": "Customer",
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "customer_id",
+              "AttributeType": "S"
+            }
+          ],
+          "KeySchema": [
+            {
+              "AttributeName": "customer_id",
+              "KeyType": "HASH"
+            }
+          ],
+          "ProvisionedThroughput": {
+            "ReadCapacityUnits": "30",
+            "WriteCapacityUnits": "30"
+          }
+        }
+      },
+      "tableProducts": {
+        "Type": "AWS::DynamoDB::Table",
+        "Properties": {
+          "TableName": "Product",
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "product_id",
+              "AttributeType": "S"
+            }
+          ],
+          "KeySchema": [
+            {
+              "AttributeName": "product_id",
+              "KeyType": "HASH"
+            }
+          ],
+          "ProvisionedThroughput": {
+            "ReadCapacityUnits": "20",
+            "WriteCapacityUnits": "5"
+          }
+        }
+      }
+    },
+    "Description": "DynamoDB",
+}

@@ -1,0 +1,4 @@
+*.log
+*db.yaml
+*.out
+secret-key.config
