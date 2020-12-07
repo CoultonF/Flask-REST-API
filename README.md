@@ -37,8 +37,7 @@ Ensure below project requirements are met, then run the makefiles according to d
 ```
 Complete deletion of build environment using
 ```
-- make -f IAC/MK/main.mak stop          #(Windows/MAC)
-- make -f IAC/MK/main.mak stop-ubuntu   #(Ubuntu)
+- make -f IAC/MK/main.mak stop          #(Windows/MAC/Ubuntu)
 - make -f IAC/EKS/main.mk stop          #(AWS)
 ```
  
