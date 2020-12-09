@@ -1,6 +1,6 @@
 # REST API using Flask on Minikube or AWS Distributed Microservices Architecture and DynamoDB - Load Tested using Gatling.IO with Simulated Failures
 
-![Alt text](docs/responses.png?raw=true "Gatling.IO Runtime Statistics")
+![Alt text](docs/stats.png?raw=true "Gatling.IO Runtime Statistics")
 
     .
     ├── API                         # Communicate with Cluster
