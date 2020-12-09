@@ -17,10 +17,10 @@ metadata:
   name: awscred
 type: Opaque
 stringData:
-  AWS_REGION: replace
-  AWS_ACCESS_KEY_ID: replace
-  AWS_SECRET_ACCESS_KEY: replace
-  AWS_SESSION_TOKEN: replace
+  AWS_REGION: <unset>
+  AWS_ACCESS_KEY_ID: <unset>
+  AWS_SECRET_ACCESS_KEY: <unset>
+  AWS_SESSION_TOKEN: <unset>
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -52,7 +52,7 @@ spec:
       serviceAccountName: svc-db
       containers:
         - name: t3db
-          image: docker.io/username/t3db:latest
+          image: docker.io/<unset>/t3db:latest
           imagePullPolicy: Always
           envFrom:
             - secretRef:
