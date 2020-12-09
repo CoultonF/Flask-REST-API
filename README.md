@@ -5,7 +5,7 @@
     .
     ├── API                         # Communicate with Cluster
     |   ├── Gatling                 # Gatling Code to Stress Test Cluster
-    |   ├── api.mak                 # Basic Running CURLs for Testing
+    |   ├── api.mak                 # Basic Running CURLs for Targeted Testing
     |   ├── gatling.mak             # Start script for Gatling Load Testing
     |   └── api-proxies.mak         # Basic Running CURLs for Gatling Recorder
     |
