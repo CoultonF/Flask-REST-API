@@ -52,7 +52,7 @@ spec:
       serviceAccountName: svc-db
       containers:
         - name: t3db
-          image: docker.io/coultonf/t3db:latest
+          image: docker.io/username/t3db:latest
           imagePullPolicy: Always
           envFrom:
             - secretRef:
