@@ -1,16 +1,3 @@
-#
-# Janky front-end to bring some sanity (?) to the litany of tools and switches
-# for working with a k8s cluster. Note that this file exercise core k8s
-# commands that's independent of where/how you cluster live.
-#
-# This file addresses APPPLing the Deployment, Service.json, Gateway, and VirtualService
-#
-# Be sure to set your context appropriately for the log monitor.
-#
-# The intended approach to working with this makefile is to update select
-# elements (body, id, IP, port, etc) as you progress through your workflow.
-# Where possible, stodout outputs are tee into .out files for later review.
-#
 AWS_DEFAULT_REGION:=$(shell cat ~/.aws/config | sed -n 2p | cut -d'=' -f2 | xargs)
 AWS_ACCESS_KEY_ID:=$(shell cat ~/.aws/credentials | sed -n 2p | cut -d'=' -f2 | xargs)
 AWS_SECRET_ACCESS_KEY:=$(shell cat ~/.aws/credentials | sed -n 3p | cut -d'=' -f2 | xargs)
