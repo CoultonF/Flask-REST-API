@@ -8,8 +8,8 @@
     |   └── api-proxies.mak         # Basic Running CURLs for Gatling Recorder
     |
     ├── IaC                         # Managing Cluster
-    |   ├── EKS                     # EKS Cluster
-    |   ├── MK                      # Minikube Cluster
+    |   ├── eks                     # EKS Cluster
+    |   ├── mk                      # Minikube Cluster
     |   ├── docker.mak              # Minikube/EKS Docker Containers
     |   ├── dynamo.mak              # AWS DynamoDB
     |   └── k8s.mak                 # Minikube/EKS Kubernetes Cluster
@@ -31,14 +31,14 @@
 
 Ensure below project requirements are met, then run the makefiles according to desired setup
 ```
-- make -f IAC/MK/main.mak               #(Windows/MAC)
-- make -f IAC/MK/main.mak start-ubuntu  #(Ubuntu)
-- make -f IAC/EKS/main.mk               #(AWS)
+- make -f IaC/mk/main.mak               #(Windows/MAC)
+- make -f IaC/mk/main.mak start-ubuntu  #(Ubuntu)
+- make -f IaC/eks/main.mk               #(AWS)
 ```
 Complete deletion of build environment using
 ```
-- make -f IAC/MK/main.mak stop          #(Windows/MAC/Ubuntu)
-- make -f IAC/EKS/main.mk stop          #(AWS)
+- make -f IaC/mk/main.mak stop          #(Windows/MAC/Ubuntu)
+- make -f IaC/eks/main.mk stop          #(AWS)
 ```
  
 ## Project Requirements
