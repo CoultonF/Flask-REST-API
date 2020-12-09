@@ -1,5 +1,7 @@
 # REST API using Flask on Minikube or AWS Distributed Microservices Architecture and DynamoDB load tested with Gatling.io
 
+![Alt text](docs/responses.ng?raw=true "Gatling.IO Runtime Statistics")
+
     .
     ├── API                         # Communicate with Cluster
     |   ├── Gatling                 # Gatling Code to Stress Test Cluster
