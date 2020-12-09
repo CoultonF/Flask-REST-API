@@ -17,15 +17,6 @@ stop:
 	cd ../../; find . -name "*.log" -delete
 	cd ../../; find . -name "*.out" -delete
 	cd ../../; find . -name "*.config" -delete
-stop-ubuntu:
-	$(MAKE) -f ../dynamo.mak delete -k
-	$(MAKE) -f ../k8s.mak delete -k
-	$(MAKE) -f ../docker.mak delete -k
-	$(MAKE) -f mk.mak delete -k
-	rm -f ../../code/db/db.yaml
-	cd ../../; find . -name "*.log" -delete
-	cd ../../; find . -name "*.out" -delete
-	cd ../../; find . -name "*.config" -delete
 
 #USED FOR TESTING SERVICES
 redeploy-returns-api:
